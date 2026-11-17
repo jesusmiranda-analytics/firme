@@ -1,0 +1,63 @@
+/* Tokens del Design System Firme (generados de tokens.json). */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --font-display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --surface: #fbf6ee;
+  --surface-raised: #ffffff;
+  --surface-sand: #e9e1d3;
+  --ink: #1d2426;
+  --ink-muted: #5a6466;
+  --brand: #0f4c47;
+  --brand-mid: #1f8a7e;
+  --link: #17736a;
+  --on-brand: #fbf6ee;
+  --accent: #e8604c;
+  --action: #c94a37;
+  --action-hover: #b03f2e;
+  --on-action: #ffffff;
+  --seal: #1f7a45;
+  --on-seal: #ffffff;
+  --success: #2e9e5b;
+  --line: #d9cfbf;
+  --line-strong: #8a7f6e;
+  --focus: #0f4c47;
+  --shadow-card: 0 1px 2px rgba(29,36,38,0.06), 0 6px 16px rgba(29,36,38,0.06);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #10201f;
+    --surface-raised: #17302e;
+    --surface-sand: #22403d;
+    --ink: #f3eee6;
+    --ink-muted: #a9b5b3;
+    --brand: #6fc7ba;
+    --brand-mid: #4fb3a6;
+    --link: #6fc7ba;
+    --on-brand: #10201f;
+    --accent: #f08a78;
+    --action: #f08a78;
+    --action-hover: #f4a091;
+    --on-action: #10201f;
+    --seal: #5cc48a;
+    --on-seal: #10201f;
+    --success: #5cc48a;
+    --line: #2e4b48;
+    --line-strong: #6e8582;
+    --focus: #6fc7ba;
+    --shadow-card: 0 1px 2px rgba(0,0,0,0.4), 0 6px 16px rgba(0,0,0,0.3);
+    color-scheme: dark;
+  }
+}
