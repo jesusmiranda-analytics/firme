@@ -4,6 +4,18 @@ import Chat from './Chat.jsx';
 import { Aplicar, Detalle, Inicio, ListaCorta, Metricas, Papeleo, Registro, Seguimiento } from './screens.jsx';
 import { CV_EJEMPLO, PERFIL_INICIAL, PERSONA } from './data.js';
 
+const IconoLuna = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+    <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+  </svg>
+);
+const IconoSol = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" />
+  </svg>
+);
+
 const PANTALLAS = ['Inicio', 'Registro', 'Chatbot de CV', 'Lista corta', 'Vacante y CV adaptado', 'Aplicación automática', 'Seguimiento', 'Guía de papeleo', 'Métricas'];
 
 export default function App() {
@@ -13,6 +25,17 @@ export default function App() {
   const [vacanteId, setVacanteId] = useState('v1');
   const [enviadas, setEnviadas] = useState([]);
   const [demo, setDemo] = useState(0); // cambia al reiniciar para volver a montar todo
+  const [tema, setTema] = useState(() => (document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'));
+  const oscuro = tema === 'dark';
+
+  // El tema es preferencia de quien presenta: "Reiniciar demo" no lo cambia.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (oscuro) root.dataset.theme = 'dark';
+    else delete root.dataset.theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', oscuro ? '#10201f' : '#fbf6ee');
+    try { localStorage.setItem('firme-tema', tema); } catch { /* sin almacenamiento: solo dura esta visita */ }
+  }, [tema, oscuro]);
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -48,12 +71,19 @@ export default function App() {
       <a className="saltar" href="#contenido">Saltar al contenido</a>
       <header className="barra">
         <button type="button" className="barra__logo" onClick={() => ir(0)} aria-label="Firme, ir al inicio">
-          <picture>
-            <source srcSet="/marca/firme-logo-inverso.svg" media="(prefers-color-scheme: dark)" />
-            <img src="/marca/firme-logo.svg" alt="" height="32" />
-          </picture>
+          <img src={oscuro ? '/marca/firme-logo-inverso.svg' : '/marca/firme-logo.svg'} alt="" height="32" />
         </button>
         <span className="barra__paso small muted" aria-live="polite">{paso + 1} de {PANTALLAS.length} · {PANTALLAS[paso]}</span>
+        <button
+          type="button"
+          className="tema-btn"
+          onClick={() => setTema(oscuro ? 'light' : 'dark')}
+          aria-pressed={oscuro}
+          aria-label={oscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+          title={oscuro ? 'Modo claro' : 'Modo oscuro'}
+        >
+          {oscuro ? <IconoSol /> : <IconoLuna />}
+        </button>
         <Button variant="secondary" size="sm" onClick={reiniciar}>Reiniciar demo</Button>
       </header>
 

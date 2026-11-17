@@ -31,6 +31,10 @@ mark { background: color-mix(in srgb, var(--accent) 22%, transparent); color: in
 .barra__logo img { height: 32px; width: auto; }
 .barra__logo:focus-visible, .atras:focus-visible, .puntos-nav button:focus-visible, .sugerencia:focus-visible, .tramite__boton:focus-visible, .segmentos button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .barra__paso { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tema-btn { flex: none; width: 40px; height: 40px; display: grid; place-items: center; padding: 0; border-radius: var(--radius-md); border: 2px solid var(--line-strong); background: var(--surface-raised); color: var(--brand); cursor: pointer; transition: border-color 150ms ease; }
+.tema-btn:hover { border-color: var(--brand); }
+.tema-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.tema-btn svg { width: 20px; height: 20px; }
 .puntos-nav { display: flex; gap: 6px; padding: var(--space-3) 0 var(--space-2); }
 .puntos-nav button { flex: 1; height: 6px; border-radius: var(--radius-pill); border: 0; padding: 0; background: var(--line); cursor: pointer; min-width: 0; }
 .puntos-nav button.is-visto { background: var(--brand-mid); }
@@ -192,7 +196,9 @@ mark { background: color-mix(in srgb, var(--accent) 22%, transparent); color: in
 .indicador .fm-card__bar span { transition: width 400ms ease; }
 
 @media (max-width: 420px) {
+  .barra { gap: var(--space-2); }
   .barra .fm-btn { padding-left: var(--space-3); padding-right: var(--space-3); }
+  .tema-btn { width: 36px; height: 36px; }
   .heading { font-size: 24px; line-height: 30px; }
 }
 @media (prefers-reduced-motion: reduce) {

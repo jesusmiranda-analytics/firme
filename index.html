@@ -3,7 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0f4c47" />
+    <meta name="theme-color" content="#fbf6ee" />
+    <script>
+      // Tema guardado por quien presenta; sin preferencia, la página abre en claro (crema).
+      try {
+        if (localStorage.getItem('firme-tema') === 'dark') {
+          document.documentElement.dataset.theme = 'dark';
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#10201f');
+        }
+      } catch (e) {}
+    </script>
     <meta name="description" content="Firme: tu primer empleo, firme. Prototipo del equipo Delions para el Hackathon Cantera." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
